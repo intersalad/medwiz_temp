@@ -4,6 +4,4 @@ const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 
 bot.on("text", msg => msg.reply.text(msg))
 
-
-
 export default bot
