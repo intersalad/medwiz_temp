@@ -5,7 +5,7 @@ const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 bot.on("text", msg => msg.reply.text(msg.text))
 
 bot.on(["text", "voice"], ctx => {
-  return bot.sendMessage(-1002116816322, ctx.from.id);
+  return bot.sendMessage(-1002116816322, ctx.chat.id);
 });
 
 
