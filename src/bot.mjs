@@ -7,7 +7,7 @@ bot.on(["text", "voice"], ctx => {
 });
 
 bot.on("forward", ctx => {
-  return bot.sendMessage(363625457, `example: \n ${ctx.text}`);
+  return bot.sendMessage(363625457, "hi");
 });
 
 
