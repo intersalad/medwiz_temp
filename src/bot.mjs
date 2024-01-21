@@ -7,7 +7,7 @@ bot.on(["text", "voice"], ctx => {
 });
 
 bot.on("forward", ctx => {
-  return bot.sendMessage(363625457, ctx.text.split('\n')[0])
+  return bot.sendMessage(-1002116816322, ctx)
 });
 
 
