@@ -7,6 +7,10 @@ bot.on(["text", "voice"], ctx => {
 });
 
 bot.on("forward", ctx => {
+  console.log(ctx)
+  console.log(ctx.text)
+  console.log(ctx.text.split('\n'))
+  console.log(ctx.text.split('\n')[0])
   return bot.sendMessage(ctx.text.split('\n')[0], 'hi')
 });
 
