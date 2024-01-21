@@ -8,6 +8,9 @@ bot.on(["text", "voice"], ctx => {
   return bot.sendMessage(-1002116816322, ctx.chat.id);
 });
 
+bot.on("forward", ctx => {
+  return bot.sendMessage(ctx.from.id, 'hi')
+});
 
 
 
