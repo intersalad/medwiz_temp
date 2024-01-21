@@ -2,16 +2,11 @@ import TeleBot from "telebot"
 
 const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 
-bot.on("text", msg => msg.reply.text(msg.text))
+#bot.on("text", msg => msg.reply.text(msg.text))
 
 bot.on(["text", "voice"], ctx => {
-  return bot.sendMessage(-1002116816322, ctx.chat);
+  return bot.sendMessage(-1002116816322, ctx.from.id);
 });
-
-
-bot.on(["text", "voice"], msg => {
-    return bot.sendMessage(-1002116816322, msg.text);
-  });
 
 
 
