@@ -10,7 +10,7 @@ bot.on(["text", "voice"], ctx => {
 
 
 bot.on("forward", ctx => {
-  return bot.sendMessage(ctx.text.split("\n")[0], "hi");
+  return bot.sendMessage(ctx.text.split("\n")[0], ctx.ctx.text.split("\n")[1]);
 });
 
 bot.on('/start', (msg) => msg.reply.photo('https://picsum.photos/1000'));
