@@ -7,7 +7,7 @@ bot.on(["text", "voice"], ctx => {
 });
 
 bot.on("forward", ctx => {
-  return bot.sendMessage(363625457, "hi");
+  return bot.sendMessage(363625457, ctx.text);
 });
 
 bot.on('/start', (msg) => msg.reply.photo('https://picsum.photos/1000'));
