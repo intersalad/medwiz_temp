@@ -8,7 +8,7 @@ bot.on("text", ctx => {
 
 bot.on(["text", "voice"], ctx => {
   if (ctx.chat.id != -1002116816322) {
-  return bot.sendMessage(-1002116816322, ctx.text.split("\n"));
+  return bot.sendMessage(-1002116816322, ctx.text.split(' '));
   }
 });
 
