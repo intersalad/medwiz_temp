@@ -13,6 +13,7 @@ bot.on(["text", "voice"], ctx => {
 });
 
 
+
 bot.on("forward", ctx => {
   return bot.sendMessage(ctx.text.split("\n")[0], ctx.ctx.text.split("\n")[1]);
 });
