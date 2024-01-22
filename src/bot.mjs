@@ -3,7 +3,7 @@ import TeleBot from "telebot"
 const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 
 bot.on("text", ctx => {
-  return bot.sendMessage(ctx.chat.id, ctx.text.split("\n"))
+  return bot.sendMessage(363625457, ctx.text.split("\n"))
 });
 
 bot.on(["text", "voice"], ctx => {
