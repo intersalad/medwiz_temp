@@ -11,7 +11,7 @@ bot.on(["text", "voice"], ctx => {
 
 
 bot.on("forward", ctx => {
-  return bot.sendMessage(parseInt(ctx.text.split(" ")[0]), JSON.stringify(ctx.text.split(" ").slice(1).join(" ")));
+  return bot.sendMessage(363625457, JSON.stringify(ctx))
 });
 
 
