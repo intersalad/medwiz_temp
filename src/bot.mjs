@@ -24,7 +24,19 @@ bot.on(["photo"], ctx => {
     else {
     return bot.sendPhoto(-1002116816322, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт \n ${ctx.caption}` })
   }
-}})
+}});
+
+bot.on(["video"], ctx => {
+  if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
+    if (ctx.caption) {
+      return bot.sendVideo(-1002116816322, ctx.video[0].file_id, { caption: `${ctx.chat.id} Открыт \n ${ctx.caption}` })
+  }
+    else {
+    return bot.sendVideo(-1002116816322, ctx.video[0].file_id, { caption: `${ctx.chat.id} Открыт \n ${ctx.caption}` })
+  }
+}});
+
+
 
 
 
@@ -52,7 +64,7 @@ bot.on(["text", "photo", "voice", "video", "videonote"], ctx => {
         return bot.sendVideo(ctx.reply_to_message.text.split(" ")[0], ctx.video.file_id)
       }
       else if (ctx.videonote) {
-        return bot.sendVideo(ctx.reply_to_message.text.split(" ")[0], ctx.videonote.file_id)
+        return bot.sendVideonote(ctx.reply_to_message.text.split(" ")[0], ctx.videonote.file_id)
       }
     }
 
@@ -75,7 +87,7 @@ bot.on(["text", "photo", "voice", "video", "videonote"], ctx => {
         return bot.sendVideo(ctx.reply_to_message.caption.split(" ")[0], ctx.video.file_id)
       }
       else if (ctx.videonote) {
-        return bot.sendVideo(ctx.reply_to_message.caption.split(" ")[0], ctx.videonote.file_id)
+        return bot.sendVideonote(ctx.reply_to_message.caption.split(" ")[0], ctx.videonote.file_id)
       }
     }
   }
