@@ -9,8 +9,8 @@ bot.on(["text", "voice"], ctx => {
   }
 });
 
-bot.on("forward", ctx => {
-  if (true) {
+bot.on("text", ctx => {
+  if (ctx.chat.id == 1002090103134) {
     return bot.sendMessage(363625457, JSON.stringify(ctx))
   }
 })
