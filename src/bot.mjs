@@ -31,9 +31,9 @@ bot.on(["photo"], ctx => {
 bot.on(["video"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
     if (ctx.caption) {
-      return bot.sendVideo(-1002116816322, JSON.stringify(ctx))}
+      return bot.sendMessage(-1002116816322, JSON.stringify(ctx))}
     else {
-    return bot.sendVideo(-1002116816322, JSON.stringify(ctx))
+    return bot.sendMessage(-1002116816322, JSON.stringify(ctx))
   }
 }});
 
