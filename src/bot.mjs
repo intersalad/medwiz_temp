@@ -6,6 +6,7 @@ const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
+
     if (ctx.caption) {
         if (ctx.photo) {
           return bot.sendPhoto(-1002116816322, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n ${ctx.caption}` })
@@ -49,7 +50,13 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
 
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id == -1002090103134) {
+
+    if (ctx.text == "/close") {
+      return bot.editMessageText(-1002090103134 , ctx.reply_to_message.id, "закрыт")
+    }
+
     if (ctx.reply_to_message.text) { 
+
       if (ctx.text) {
         return bot.sendMessage(ctx.reply_to_message.text.split(" ")[0], ctx.text)
       }
@@ -94,7 +101,12 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
         return bot.sendVoice(ctx.reply_to_message.caption.split(" ")[0], ctx.voice.file_id)
       }
       else if (ctx.video) {
-        return bot.sendVideo(ctx.reply_to_message.caption.split(" ")[0], ctx.video.file_id)
+        if (ctx.caption) {
+          return bot.sendVideo(ctx.reply_to_message.caption.split(" ")[0], ctx.video.file_id, { caption: ctx.caption})
+        }
+        else {
+          return bot.sendVideo(ctx.reply_to_message.caption.split(" ")[0], ctx.video.file_id)
+        }
       }
       else if (ctx.video_note) {
         return bot.sendVideoNote(ctx.reply_to_message.caption.split(" ")[0], ctx.video_note.file_id)
