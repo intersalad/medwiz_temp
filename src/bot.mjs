@@ -14,6 +14,7 @@ bot.on("forward", ctx => {
   return bot.sendMessage(ctx.text.split(" ")[0], JSON.stringify(ctx.text.split(" ").slice(1).join(" ")));
 });
 
+
 bot.on('/start', (msg) => msg.reply.photo('https://picsum.photos/1000'));
 
 export default bot
