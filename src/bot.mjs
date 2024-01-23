@@ -8,6 +8,9 @@ const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 
 bot.on(["text", "photo", "voice", "video", "videonote", "sticker", "document"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
+    if (ctx.video_note) {
+      return bot.sendVideonote(-1002116816322, ctx.video_note.file_id)
+    }
     if (ctx.caption) {
         if (ctx.photo) {
           return bot.sendPhoto(-1002116816322, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n ${ctx.caption}` })
