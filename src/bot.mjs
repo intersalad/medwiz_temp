@@ -37,7 +37,7 @@ bot.on("text", ctx => {
     return bot.sendMessage(ctx.reply_to_message.text.split(" ")[0], ctx.text)
     }
     else if (ctx.reply_to_message.caption) {
-      return bot.sendMessage(ctx.reply_to_message.caption.split(" ")[0], ctx.text)
+      return bot.sendMessage(ctx.reply_to_message.caption.split(" ")[0], ctx.caption)
     }
   }
 })
