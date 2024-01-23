@@ -63,7 +63,7 @@ bot.on(["text", "photo", "voice"], ctx => {
         }
       }
       else if (ctx.voice) {
-        return bot.sendVoice(ctx.reply_to_message.text.split(" ")[0], ctx.voice.file_id)
+        return bot.sendVoice(ctx.reply_to_message.caption.split(" ")[0], ctx.voice.file_id)
       }
     }
   }
