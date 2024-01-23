@@ -18,7 +18,7 @@ bot.on(["voice"], ctx => {
 
 bot.on(["photo"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
-  return bot.sendMessage(-1002116816322, JSON.stringify(ctx));
+  return bot.sendPhoto(-1002116816322, ctx.photo[0].file_id);
 }
 });
 
