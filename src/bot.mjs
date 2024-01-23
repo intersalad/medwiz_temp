@@ -52,7 +52,6 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
   if (ctx.chat.id == -1002090103134) {
 
     if (ctx.text == "/close") {
-      return bot.sendMessage(-1002090103134 , JSON.stringify(ctx))
       return bot.editMessageText(-1002116816322, reply_to_message.forward_from_message_id, "закрыт")
     }
 
