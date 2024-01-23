@@ -9,11 +9,6 @@ bot.on(["text", "voice"], ctx => {
   }
 });
 
-bot.on(["text", "voice"], ctx => {
-  if (ctx.chat.id == -1002090103134)
-  return ctx.reply.text('словил')
-});
-
 
 bot.on("text", ctx => {
   if (ctx.chat.id == -1002090103134) {
