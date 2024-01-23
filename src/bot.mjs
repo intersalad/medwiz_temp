@@ -3,11 +3,20 @@ import TeleBot from "telebot"
 const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 
 
-bot.on(["text", "voice"], ctx => {
+bot.on(["text"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
   return bot.sendMessage(-1002116816322, `${ctx.chat.id} \n ${ctx.text}`);
-  }
+}
 });
+
+bot.on(["voice"], ctx => {
+  if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
+  return bot.sendVoice(-1002116816322, ctx.voice.file_id, caption=ctx.chat.id);
+}
+});
+
+
+
 
 
 bot.on("text", ctx => {
