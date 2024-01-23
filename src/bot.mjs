@@ -12,7 +12,7 @@ bot.on(["text"], ctx => {
 
 bot.on(["voice"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
-  return bot.sendVoice(-1002116816322, ctx.voice.file_id, caption='123');
+  return bot.sendVoice(-1002116816322, ctx.voice.file_id, caption="123");
 }
 });
 
