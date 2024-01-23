@@ -3,40 +3,43 @@ import TeleBot from "telebot"
 const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 
 
-bot.on(["text"], ctx => {
-  if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
-  return bot.sendMessage(-1002116816322, `${ctx.chat.id} Открыт \n ${ctx.text}`);
-}
-});
+
+bot.on("*", ctx => {
+  return bot.sendMessage(-1002116816322, JSON.stringify(ctx))
+})
 
 
-bot.on(["voice"], ctx => {
-  if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
-  return bot.sendVoice(-1002116816322, ctx.voice.file_id, { caption: `${ctx.chat.id} Открыт` });
-}
-});
-
-
-bot.on(["photo"], ctx => {
+bot.on(["text", "photo", "voice", "video", "videonote"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
     if (ctx.caption) {
-      return bot.sendPhoto(-1002116816322, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n ${ctx.caption}` })
-  }
+        if (ctx.photo) {
+          return bot.sendPhoto(-1002116816322, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n ${ctx.caption}` })
+        }
+        else if (ctx.video) {
+          return bot.sendVideo(-1002116816322, ctx.file_id, { caption: `${ctx.chat.id} Открыт\n ${ctx.caption}` })
+        }
+        else if (ctx.videonote) {}
+        else if (ctx.sticker) {}
+        else if (ctx.document) {}
+    }
     else {
-    return bot.sendPhoto(-1002116816322, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n` })
-  }
-}});
+      if (ctx.text) {
+        return bot.sendMessage(-1002116816322, `${ctx.chat.id} Открыт \n ${ctx.text}`);
+      }
+      else if (ctx.photo) {
+        return bot.sendPhoto(-1002116816322, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n` })
+      }
+      else if (ctx.voice) {
+        return bot.sendVoice(-1002116816322, ctx.voice.file_id, { caption: `${ctx.chat.id} Открыт` });
+      }
+      else if (ctx.video) {
+        return bot.sendVideo(-1002116816322, ctx.file_id)
+      }
+      else if (ctx.videonote) {}
+      else if (ctx.sticker) {}
+      else if (ctx.document) {}
 
-
-bot.on(["video"], ctx => {
-  if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
-    return bot.sendMessage(-1002116816322, JSON.stringify(ctx))
-  }
-});
-
-bot.on(["*"], ctx => {
-  if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
-    return bot.sendMessage(-1002116816322, JSON.stringify(ctx))
+    }
   }
 });
 
