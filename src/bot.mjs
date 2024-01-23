@@ -44,7 +44,12 @@ bot.on("text", ctx => {
 
 bot.on("photo", ctx => {
   if (ctx.chat.id == -1002090103134) {
-    return bot.sendPhoto(ctx.reply_to_message.text.split(" ")[0], ctx.photo[0].file_id, { caption: ctx.caption})
+    if (ctx.reply_to_message.text) {
+      return bot.sendPhoto(ctx.reply_to_message.text.split(" ")[0], ctx.photo[0].file_id, { caption: ctx.caption})
+    }
+    else if (ctx.reply_to_message.caption) {
+      return bot.sendPhoto(ctx.reply_to_message.caption.split(" ")[0], ctx.photo[0].file_id, { caption: ctx.caption})
+    }
   }
 })
 
