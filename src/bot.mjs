@@ -6,13 +6,9 @@ const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
-    if (ctx.video_note) {
-      return bot.sendVideoNote(-1002116816322, ctx.video_note.file_id)
-    }
-
     if (ctx.caption) {
         if (ctx.photo) {
-          return bot.sendphoto(-1002116816322, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n ${ctx.caption}` })
+          return bot.sendPhoto(-1002116816322, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n ${ctx.caption}` })
         }
         else if (ctx.video) {
           return bot.sendVideo(-1002116816322, ctx.file_id, { caption: `${ctx.chat.id} Открыт\n ${ctx.caption}` })
@@ -36,7 +32,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
         return bot.sendVideo(-1002116816322, ctx.video.file_id,  { caption: `${ctx.chat.id} Открыт` })
       }
       else if (ctx.video_note) {
-        return bot.sendVideonote(-1002116816322, ctx.video_note.file_id)
+        return bot.sendVideoNote(-1002116816322, ctx.video_note.file_id)
       }
       else if (ctx.sticker) {
         return bot.sendSticker(-1002116816322, ctx.sticker.file_id)
@@ -51,10 +47,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
 
 
 
-
-
-
-bot.on(["text", "photo", "voice", "video", "videonote"], ctx => {
+bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id == -1002090103134) {
     if (ctx.reply_to_message.text) { 
       if (ctx.text) {
@@ -74,8 +67,14 @@ bot.on(["text", "photo", "voice", "video", "videonote"], ctx => {
       else if (ctx.video) {
         return bot.sendVideo(ctx.reply_to_message.text.split(" ")[0], ctx.video.file_id)
       }
-      else if (ctx.videonote) {
-        return bot.sendVideonote(ctx.reply_to_message.text.split(" ")[0], ctx.videonote.file_id)
+      else if (ctx.video_note) {
+        return bot.sendVideoNote(ctx.reply_to_message.text.split(" ")[0], ctx.video_note.file_id)
+      }
+      else if (ctx.sticker) {
+        return bot.sendSticker(ctx.reply_to_message.text.split(" ")[0], ctx.sticker.file_id)
+      }
+      else if (ctx.document) {
+        return bot.sendDocument(ctx.reply_to_message.text.split(" ")[0], ctx.document.file_id)
       }
     }
 
@@ -97,8 +96,14 @@ bot.on(["text", "photo", "voice", "video", "videonote"], ctx => {
       else if (ctx.video) {
         return bot.sendVideo(ctx.reply_to_message.caption.split(" ")[0], ctx.video.file_id)
       }
-      else if (ctx.videonote) {
-        return bot.sendVideonote(ctx.reply_to_message.caption.split(" ")[0], ctx.videonote.file_id)
+      else if (ctx.video_note) {
+        return bot.sendVideoNote(ctx.reply_to_message.caption.split(" ")[0], ctx.video_note.file_id)
+      }
+      else if (ctx.sticker) {
+        return bot.sendSticker(ctx.reply_to_message.caption.split(" ")[0], ctx.sticker.file_id)
+      }
+      else if (ctx.document) {
+        return bot.sendDocument(ctx.reply_to_message.caption.split(" ")[0], ctx.document.file_id)
       }
     }
   }
