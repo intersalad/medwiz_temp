@@ -5,7 +5,7 @@ const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 
 bot.on(["text", "voice"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
-  return bot.forwardMessage(-1002090103134, ctx.chat.id, ctx.message_id);
+  return bot.forwardMessage(-1002116816322, ctx.chat.id, ctx.message_id);
   }
 });
 
