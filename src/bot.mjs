@@ -31,29 +31,37 @@ bot.on(["photo"], ctx => {
 
 
 
-bot.on("text", ctx => {
+bot.on(["text", "photo"], ctx => {
   if (ctx.chat.id == -1002090103134) {
-    if (ctx.reply_to_message.text) {
-    return bot.sendMessage(ctx.reply_to_message.text.split(" ")[0], ctx.text)
+    if (ctx.reply_to_message.text) { 
+      if (ctx.text) {
+        return bot.sendMessage(ctx.reply_to_message.text.split(" ")[0], ctx.text)
+      }
+      else if (ctx.photo) {
+        if (ctx.caption) {
+          return bot.sendPhoto(ctx.reply_to_message.text.split(" ")[0], ctx.photo[0].file_id, { caption: ctx.caption})
+        }
+        else {
+          return bot.sendPhoto(ctx.reply_to_message.text.split(" ")[0], ctx.photo[0].file_id)
+        }
+      }
     }
+
     else if (ctx.reply_to_message.caption) {
-      return bot.sendMessage(ctx.reply_to_message.caption.split(" ")[0], ctx.caption)
+      if (ctx.text) {
+        return bot.sendMessage(ctx.reply_to_message.caption.split(" ")[0], ctx.text)
+      }
+      else if (ctx.photo) {
+        if (ctx.caption) {
+          return bot.sendPhoto(ctx.reply_to_message.caption.split(" ")[0], ctx.photo[0].file_id, { caption: ctx.caption})
+        }
+        else {
+          return bot.sendPhoto(ctx.reply_to_message.caption.split(" ")[0], ctx.photo[0].file_id)
+        }
+      }
     }
   }
 })
-
-bot.on("photo", ctx => {
-  if (ctx.chat.id == -1002090103134) {
-    if (ctx.reply_to_message.text) {
-      return bot.sendPhoto(ctx.reply_to_message.text.split(" ")[0], ctx.photo[0].file_id, { caption: ctx.caption})
-    }
-    else if (ctx.reply_to_message.caption) {
-      return bot.sendPhoto(ctx.reply_to_message.caption.split(" ")[0], ctx.photo[0].file_id, { caption: ctx.caption})
-    }
-  }
-})
-
-
 
 
 bot.on('/start', (msg) => msg.reply.photo('https://picsum.photos/1000'));
