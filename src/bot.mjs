@@ -52,6 +52,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
       return bot.editMessageText(-1002116816322, ctx.reply_to_message.forward_from_message_id, "закрыт")
     }
 
+    
     if (ctx.reply_to_message.text) { 
 
       if (ctx.text) {
