@@ -46,7 +46,6 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
 });
 
 
-
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id == -1002090103134) {
     if (ctx.text == "/close") {
