@@ -49,10 +49,9 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id == -1002090103134) {
     if (ctx.text == "/close") {
-      return bot.editMessageText(-1002116816322, ctx.reply_to_message.forward_from_message_id, "закрыт")
+      return bot.editMessageText(-1002116816322, ctx.reply_to_message.forward_from_message_id, "закbрыт")
     }
 
-    
     if (ctx.reply_to_message.text) { 
 
       if (ctx.text) {
