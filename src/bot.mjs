@@ -53,6 +53,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
 
     if (ctx.text == "/close") {
       return bot.sendMessage(-1002090103134 , JSON.stringify(ctx))
+      return bot.editMessageEdit(-1002116816322, reply_to_message.forward_from_message_id, "закрыт")
     }
 
     if (ctx.reply_to_message.text) { 
