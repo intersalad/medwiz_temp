@@ -31,7 +31,7 @@ bot.on(["photo"], ctx => {
 
 
 
-bot.on(["text", "photo", "voice"], ctx => {
+bot.on(["text", "photo", "voice", "video", "videonote"], ctx => {
   if (ctx.chat.id == -1002090103134) {
     if (ctx.reply_to_message.text) { 
       if (ctx.text) {
@@ -47,6 +47,12 @@ bot.on(["text", "photo", "voice"], ctx => {
       }
       else if (ctx.voice) {
         return bot.sendVoice(ctx.reply_to_message.text.split(" ")[0], ctx.voice.file_id)
+      }
+      else if (ctx.video) {
+        return bot.sendVideo(ctx.reply_to_message.text.split(" ")[0], ctx.video.file_id)
+      }
+      else if (ctx.videonote) {
+        return bot.sendVideo(ctx.reply_to_message.text.split(" ")[0], ctx.videonote.file_id)
       }
     }
 
@@ -64,6 +70,12 @@ bot.on(["text", "photo", "voice"], ctx => {
       }
       else if (ctx.voice) {
         return bot.sendVoice(ctx.reply_to_message.caption.split(" ")[0], ctx.voice.file_id)
+      }
+      else if (ctx.video) {
+        return bot.sendVideo(ctx.reply_to_message.caption.split(" ")[0], ctx.video.file_id)
+      }
+      else if (ctx.videonote) {
+        return bot.sendVideo(ctx.reply_to_message.caption.split(" ")[0], ctx.videonote.file_id)
       }
     }
   }
