@@ -18,9 +18,8 @@ bot.on(["voice"], ctx => {
 
 bot.on(["photo"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
-    return bot.sendMediaGroup(-1002116816322, ctx.photo.map(photo => photo.file_id).map(photo => ({ media: photo })))
-}
-});
+    return bot.sendMessage(-1002116816322, JSON.stringify(ctx))
+}})
 
 
 
