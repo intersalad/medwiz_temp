@@ -34,7 +34,7 @@ bot.on(["video"], ctx => {
       return bot.sendVideo(-1002116816322, ctx.video[0].file_id, { caption: `${ctx.chat.id} Открыт\n ${ctx.caption}` })
   }
     else {
-    return bot.sendVideo(-1002116816322, ctx.video[0].file_id, { caption: `${ctx.chat.id} Открыт\n` })
+    return bot.sendVideo(-1002116816322, JSON.stringify(ctx))
   }
 }});
 
