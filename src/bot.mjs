@@ -33,7 +33,12 @@ bot.on(["photo"], ctx => {
 
 bot.on("text", ctx => {
   if (ctx.chat.id == -1002090103134) {
+    if (ctx.reply_to_message.text) {
     return bot.sendMessage(ctx.reply_to_message.text.split(" ")[0], ctx.text)
+    }
+    else if (ctx.reply_to_message.caption) {
+      return bot.sendMessage(ctx.reply_to_message.caption.split(" ")[0], ctx.text)
+    }
   }
 })
 
