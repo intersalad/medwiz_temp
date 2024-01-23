@@ -9,7 +9,7 @@ bot.on(["text", "voice"], ctx => {
   }
 });
 
-bot.on(["text"], ctx => {
+bot.on(["text", "voice"], ctx => {
   return bot.sendMessage(363625457, JSON.stringify(ctx))
 });
 
