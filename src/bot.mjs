@@ -31,7 +31,7 @@ bot.on(["photo"], ctx => {
 
 
 
-bot.on(["text", "photo"], ctx => {
+bot.on(["text", "photo", "voice"], ctx => {
   if (ctx.chat.id == -1002090103134) {
     if (ctx.reply_to_message.text) { 
       if (ctx.text) {
@@ -44,6 +44,9 @@ bot.on(["text", "photo"], ctx => {
         else {
           return bot.sendPhoto(ctx.reply_to_message.text.split(" ")[0], ctx.photo[0].file_id)
         }
+      }
+      else if (ctx.voice) {
+        return bot.sendVoice(ctx.reply_to_message.text.split(" ")[0], ctx.voice.file_id)
       }
     }
 
@@ -58,6 +61,9 @@ bot.on(["text", "photo"], ctx => {
         else {
           return bot.sendPhoto(ctx.reply_to_message.caption.split(" ")[0], ctx.photo[0].file_id)
         }
+      }
+      else if (ctx.voice) {
+        return bot.sendVoice(ctx.reply_to_message.text.split(" ")[0], ctx.voice.file_id)
       }
     }
   }
