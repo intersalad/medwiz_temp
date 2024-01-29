@@ -1,5 +1,7 @@
 import TeleBot from "telebot"
+import { createClient } from '@supabase/supabase-js'
 
+const supabase = createClient('https://aaxeiskpmpjxmdpdehop.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFheGVpc2twbXBqeG1kcGRlaG9wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDY1NjYzMDUsImV4cCI6MjAyMjE0MjMwNX0.jZ7PaYu3mWw0Y0_uNJ3j97QVhGKXuKzU3VORszwwvmE')
 
 const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 const chanel_id = -1002116816322
@@ -121,8 +123,8 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
 
 bot.on('/start', (msg) => bot.sendMessage(msg.chat.id, "hellooo"));
 
-let data = '345'
+const { data, error } = await supabase.from('tasks').select()
 
-bot.on('/test', (ctx) => bot.sendMessage(ctx.chat.id, data))
+bot.on('/test', (ctx) => bot.sendMessage(ctx.chat.id, JSON.stringify(data)))
 
 export default bot
