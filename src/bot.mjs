@@ -10,7 +10,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
     if (ctx.caption) {
         if (ctx.photo) {
-          return bot.sendPhoto('@medwizar', ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n ${ctx.caption}` })
+          return bot.sendPhoto(-1002116816322, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n ${ctx.caption}` })
         }
         else if (ctx.video) {
           return bot.sendVideo(-1002116816322, ctx.file_id, { caption: `${ctx.chat.id} Открыт\n ${ctx.caption}` })
@@ -21,7 +21,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
     }
     else {
       if (ctx.text) {
-        return bot.sendMessage(-1002116816322, `${ctx.chat.id} Открыто \n ${ctx.text} \n ${tasks}`);
+        return bot.sendMessage(-1002116816322, `${ctx.chat.id} Открыто \n ${ctx.text}`);
       }
       else if (ctx.photo) {
         return bot.sendPhoto(-1002116816322, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n` });
