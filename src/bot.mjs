@@ -10,7 +10,6 @@ const global_chat_id = -1002090103134
 
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
-
     if (ctx.caption) {
         if (ctx.photo) {
           return bot.sendPhoto(-1002116816322, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n ${ctx.caption}` })
@@ -126,10 +125,8 @@ bot.on('/start', (msg) => bot.sendMessage(msg.chat.id, "hellooo"));
 
 
 function update(ctx) {
-  const { data, error } = await supabase.from('tasks').select().eq('user_id', ctx.chat.id);
-  return bot.sendMessage((ctx.chat.id, "go"))
+  return bot.sendMessage((ctx.chat.id, "go"));
 }
-
 
 bot.on('/test', update(ctx));
 
