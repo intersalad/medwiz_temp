@@ -123,7 +123,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
 
 bot.on('/start', (msg) => bot.sendMessage(msg.chat.id, "hellooo"));
 
-
+const data = await supabase.from('tasks').select()
 bot.on('/test', (ctx) => bot.sendMessage(ctx.chat.id, 'work'))
 
 export default bot
