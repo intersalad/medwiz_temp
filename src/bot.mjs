@@ -119,6 +119,6 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
 })
 
 
-bot.on('/start', (msg) => msg.reply.photo('https://picsum.photos/1000'));
+bot.on('/start', (msg) => bot.sendMessage(msg.chat.id, "hellooo"));
 
 export default bot
