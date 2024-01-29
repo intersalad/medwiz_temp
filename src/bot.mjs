@@ -10,7 +10,7 @@ let tasks = [];
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
 
-    bot.sendMessage(ctx.chat.id, tasks)
+    bot.sendMessage(ctx.chat.id, JSON.stringify(tasks))
 
     if (tasks.includes(ctx.chat.id)) {
       to_chat = 1
