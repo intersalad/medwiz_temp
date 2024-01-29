@@ -11,9 +11,6 @@ const global_chat_id = -1002090103134
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
 
-    const { data, error } = await supabase.from('tasks').select().eq('user_id', ctx.chat.id);
-    return bot.sendMessage(ctx.chat.id, JSON.stringify(data));
-
     if (ctx.caption) {
         if (ctx.photo) {
           return bot.sendPhoto(-1002116816322, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n ${ctx.caption}` })
@@ -127,6 +124,13 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
 
 bot.on('/start', (msg) => bot.sendMessage(msg.chat.id, "hellooo"));
 
-bot.on('/test', (ctx) => bot.sendMessage(ctx.chat.id, "go"))
+
+function update(ctx) {
+  const { data, error } = await supabase.from('tasks').select().eq('user_id', ctx.chat.id);
+  return bot.sendMessage((ctx.chat.id, "go"))
+}
+
+
+bot.on('/test', update(ctx));
 
 export default bot
