@@ -128,7 +128,7 @@ function update(ctx) {
   return bot.sendMessage((ctx.chat.id, "go"));
 }
 
-const { data, error } = await supabase.from('tasks').select()
+let { data, error } = await supabase.from('tasks').select()
 
 bot.on('/test', (ctx) => {
   return bot.sendMessage(ctx.chat.id, JSON.stringify(data))
