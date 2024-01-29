@@ -1,11 +1,24 @@
 import TeleBot from "telebot"
 
 const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
+const chanel_id = -1002116816322
+const global_chat_id = -1002090103134
 
+let tasks = [];
 
 
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
+
+    if (tasks.includes(ctx.chat.id)) {
+      to_chat = 1
+    }
+    else {
+      tasks.push(ctx.chat.id);
+      to_chat = chanel_id
+      bot.sendMessage(ctx.chat.id, tasks)
+    }
+
 
     if (ctx.caption) {
         if (ctx.photo) {
@@ -21,7 +34,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
 
     else {
       if (ctx.text) {
-        return bot.sendMessage(-1002116816322, `${ctx.chat.id} Открыто \n ${ctx.text}`);
+        return bot.sendMessage(-1002116816322, `${ctx.chat.id} Открыто \n ${ctx.text} \n ${tasks}`);
       }
       else if (ctx.photo) {
         return bot.sendPhoto(-1002116816322, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n` })
