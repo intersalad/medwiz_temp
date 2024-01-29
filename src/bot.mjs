@@ -7,25 +7,9 @@ const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 const chanel_id = -1002116816322
 const global_chat_id = -1002090103134
 
-let tasks = [];
-
 
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
-
-    bot.sendMessage(ctx.chat.id, JSON.stringify(tasks))
-
-    if (tasks.includes(ctx.chat.id)) {
-      to_chat = 1
-      bot.sendMessage()
-    }
-    else {
-
-      bot.editMessageText(-1002090103134, )
-      to_chat = chanel_id
-      bot.sendMessage(ctx.chat.id, tasks)
-    }
-
 
     if (ctx.caption) {
         if (ctx.photo) {
