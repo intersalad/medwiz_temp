@@ -124,9 +124,18 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
 bot.on('/start', (msg) => bot.sendMessage(msg.chat.id, "hellooo"));
 
 
-bot.on('/test', (ctx) => {
-  let { data, error } = supabase.from('tasks').select()
-  return bot.sendMessage(ctx.chat.id, JSON.stringify(data))
+bot.on('/test', async (ctx) => {
+  try {
+    let { data, error } = await supabase.from('tasks').select()
+    if (error) {
+      throw error
+    }
+    return bot.sendMessage(ctx.chat.id, JSON.stringify(data))
+  } catch (error) {
+    console.error('Error fetching data:', error)
+    return bot.sendMessage(ctx.chat.id, 'An error occurred while fetching data')
+  }
 })
+
 
 export default bot
