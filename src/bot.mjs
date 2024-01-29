@@ -1,5 +1,5 @@
 import TeleBot from "telebot"
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
 const supabase = createClient('https://aaxeiskpmpjxmdpdehop.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFheGVpc2twbXBqeG1kcGRlaG9wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDY1NjYzMDUsImV4cCI6MjAyMjE0MjMwNX0.jZ7PaYu3mWw0Y0_uNJ3j97QVhGKXuKzU3VORszwwvmE')
 
