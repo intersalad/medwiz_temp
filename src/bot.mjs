@@ -124,13 +124,8 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
 bot.on('/start', (msg) => bot.sendMessage(msg.chat.id, "hellooo"));
 
 
-function update(ctx) {
-  return bot.sendMessage((ctx.chat.id, "go"));
-}
-
-let { data, error } = await supabase.from('tasks').select()
-
 bot.on('/test', (ctx) => {
+  let { data, error } = supabase.from('tasks').select()
   return bot.sendMessage(ctx.chat.id, JSON.stringify(data))
 })
 
