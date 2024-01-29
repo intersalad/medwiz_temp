@@ -128,8 +128,9 @@ function update(ctx) {
   return bot.sendMessage((ctx.chat.id, "go"));
 }
 
+const { data, error } = await supabase.from('tasks').select()
+
 bot.on('/test', (ctx) => {
-  const { data, error } = await supabase.from('tasks').select()
   return bot.sendMessage(ctx.chat.id, JSON.stringify(data))
 })
 
