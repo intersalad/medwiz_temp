@@ -130,7 +130,7 @@ bot.on('/test', async (ctx) => {
     if (error) {
       throw error
     }
-    return bot.sendMessage(ctx.chat.id, JSON.stringify(data))
+    return bot.sendMessage(ctx.chat.id, `JSON.stringify(data) ${JSON.stringify(data)} JSON.stringify(error) ${JSON.stringify(error)}`)
   } catch (error) {
     console.error('Error fetching data:', error)
     return bot.sendMessage(ctx.chat.id, 'An error occurred while fetching data')
