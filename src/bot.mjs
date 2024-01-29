@@ -126,11 +126,11 @@ bot.on('/start', (msg) => bot.sendMessage(msg.chat.id, "hellooo"));
 
 bot.on('/test', async (ctx) => {
   try {
-    let { data, error } = await supabase.from('tasks').select()
+    const { data, error } = await supabase.from('tasks').select()
     if (error) {
       throw error
     }
-    return bot.sendMessage(ctx.chat.id, `JSON.stringify(data) ${JSON.stringify(data)} JSON.stringify(error) ${JSON.stringify(error)}`)
+    return bot.sendMessage(ctx.chat.id, `JSON.stringify(data) ${JSON.stringify(data)}\nJSON.stringify(error) ${JSON.stringify(error)}`)
   } catch (error) {
     console.error('Error fetching data:', error)
     return bot.sendMessage(ctx.chat.id, 'An error occurred while fetching data')
