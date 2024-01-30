@@ -23,7 +23,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
     else {
       return bot.sendMessage(-1002116816322, 'Ваше сообщение').then((result) => {
         const { error } = await supabase.from('tasks').insert({ user_id: ctx.chat.id, message: result.message_id })
-        return bot.sendMessage(363625457, JSON.stringify(result)) 
+        bot.sendMessage(363625457, JSON.stringify(result)) 
       })
     }
 
