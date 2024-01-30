@@ -15,7 +15,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
     if (data.length > 0){
       const to_chat = -1002090103134
       if (ctx.text) {
-        return bot.forwardMessage(-1002090103134, ctx.text, { replyToMessage: 585 })
+        return bot.sendMessage(-1002090103134, ctx.text)
       }
 
     } else {
@@ -61,6 +61,12 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
 });
 
 
+bot.on("text", ctx =>{
+  if (ctx.chat.id ==  -1002116816322){
+    bot.sendMessage(363625457, JSON.stringify(ctx.message_id))
+  }
+
+})
 
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id == -1002090103134) {
