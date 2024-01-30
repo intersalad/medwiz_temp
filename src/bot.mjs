@@ -18,7 +18,6 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
         bot.sendMessage(-1002090103134, ctx.text)
       }
 
-
     } else {
       const to_chat = -1002116816322
       const { error } = await supabase.from('tasks').insert({ user_id: ctx.chat.id })
@@ -68,9 +67,14 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
       return bot.editMessageText(-1002116816322, ctx.reply_to_message.forward_from_message_id, "щ")
     }
 
+
+
     if (ctx.reply_to_message.text) { 
 
       if (ctx.text) {
+        if (ctx.reply_to_message.is_automatic_forward){
+          return bot.sendMessage(363625457, JSON.stringify(ctx))
+        }
         return bot.sendMessage(-1002116816322,JSON.stringify(ctx))
       }
       else if (ctx.photo) {
