@@ -7,29 +7,12 @@ const bot = new TeleBot(process.env.TELEGRAM_BOT_TOKEN)
 const chanel_id = -1002116816322
 const global_chat_id = -1002090103134
 
-async function checkTaskForUser(chatId) {
-  try {
-    const { data, error } = await supabase.from('tasks').select().eq('user_id', chatId)
-    if (error) {
-      throw error
-    }
-    if (data.length > 0) {
-      return true
-    } else {
-      return false
-    }
-  } catch (error) {
-    return false
-  }
-}
-
 
 
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
-    const is_active = await checkTaskForUser(ctx.chat.id);
-
-    if (is_active){
+    const { data, error } = await supabase.from('tasks').select().eq('user_id', chatId)
+    if (data.length > 0){
       to_chat = -1002116816322
     } else {
       to_chat = -1002116816322
