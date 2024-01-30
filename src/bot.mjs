@@ -67,10 +67,10 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
       return bot.editMessageText(-1002116816322, ctx.reply_to_message.forward_from_message_id, "щ")
     }
 
-    if (ctx.reply_to_message.is_automatic_forward){
+    if (ctx){
       return bot.sendMessage(363625457, JSON.stringify(ctx))
     }
-    
+
     if (ctx.reply_to_message.text) { 
       if (ctx.text) {
         return bot.sendMessage(-1002116816322,JSON.stringify(ctx))
