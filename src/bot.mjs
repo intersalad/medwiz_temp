@@ -14,9 +14,11 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
     const { data, error } = await supabase.from('tasks').select().eq('user_id', chatId)
     if (data.length > 0){
       const to_chat = -1002116816322
+      return bot.sendMessage(to_chat, "не добавлен")
     } else {
       const to_chat = -1002116816322
       const { error } = await supabase.from('tasks').insert({ user_id: ctx.chat.id })
+      return bot.sendMessage(to_chat, "новый добавлен")
     }
 
     if (ctx.caption) {
