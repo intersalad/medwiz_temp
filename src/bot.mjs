@@ -28,6 +28,7 @@ async function checkTaskForUser(chatId) {
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
     const is_active = await checkTaskForUser(ctx.chat.id);
+
     if (is_active){
       to_chat = -1002116816322
     } else {
@@ -147,24 +148,6 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
 
 
 bot.on('/start', (msg) => bot.sendMessage(msg.chat.id, "hellooo"));
-
-
-bot.on('/test', async (ctx) => {
-  try {
-    const { data, error } = await supabase.from('tasks').select().eq('user_id', ctx.chat.id)
-    if (data.length > 0) {
-      return bot.sendMessage(ctx.chat.id, "есть в списке")
-    }
-    else {
-      return bot.sendMessage(ctx.chat.id, "нет в списке")
-    }
-    if (error) {
-      throw error
-    }
-  } catch (error) {
-    return bot.sendMessage(ctx.chat.id, `An error occurred while fetching data ${error} \n ${data}`)
-  }
-})
 
 
 
