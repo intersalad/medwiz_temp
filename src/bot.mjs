@@ -9,13 +9,13 @@ const global_chat_id = -1002090103134
 
 
 
-bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
+bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], async (ctx) => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
     const { data, error } = await supabase.from('tasks').select().eq('user_id', chatId)
     if (data.length > 0){
-      let to_chat = -1002116816322
+      const to_chat = -1002116816322
     } else {
-      let to_chat = -1002116816322
+      const to_chat = -1002116816322
       const { error } = await supabase.from('tasks').insert({ user_id: ctx.chat.id })
     }
 
