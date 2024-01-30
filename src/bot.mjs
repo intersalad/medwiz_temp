@@ -13,12 +13,11 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
     const { data, error } = await supabase.from('tasks').select().eq('user_id', ctx.chat.id)
     if (data.length > 0){
-      const to_chat = -1002116816322
-      return bot.sendMessage(-1002116816322, "не добавлен")
+      const to_chat = -1002090103134
+
     } else {
       const to_chat = -1002116816322
       const { error } = await supabase.from('tasks').insert({ user_id: ctx.chat.id })
-      return bot.sendMessage(-1002116816322, "новый добавлен")
     }
 
     if (ctx.caption) {
@@ -68,7 +67,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
     if (ctx.reply_to_message.text) { 
 
       if (ctx.text) {
-        return bot.sendMessage(ctx.reply_to_message.text.split(" ")[0], ctx.text)
+        return bot.sendMessage(-1002116816322,JSON.stringify(ctx))
       }
       else if (ctx.photo) {
         if (ctx.caption) {
