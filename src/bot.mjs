@@ -15,7 +15,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
     if (data.length > 0)
     {
       if (ctx.text) {
-        return bot.sendMessage(-1002090103134, ctx.text, { reply_parameters: [{message_id: 372 }]})
+        return bot.sendMessage(-1002090103134, ctx.text, { reply_parameters: {message_id: 372 }})
       }
     }
     
