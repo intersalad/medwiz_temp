@@ -136,11 +136,12 @@ bot.on('/test', async (ctx) => {
     else {
       return bot.sendMessage(ctx.chat.id, "нет в списке")
     }
-
   } catch (error) {
+    console.error('Error fetching data:', error)
     return bot.sendMessage(ctx.chat.id, 'An error occurred while fetching data')
   }
 })
+
 
 
 export default bot
