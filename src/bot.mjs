@@ -17,11 +17,10 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
       if (ctx.text) {
         return bot.sendMessage(-1002090103134, ctx.text)
       }
-
     } 
     
     else {
-      return bot.sendMessage(-1002116816322, 'Ваше сообщение').then((result) => {
+      return bot.sendMessage(-1002116816322, 'Ваше сообщение').then( async (result) => {
         const { error } = await supabase.from('tasks').insert({ user_id: ctx.chat.id, message: result })
       })
     }
