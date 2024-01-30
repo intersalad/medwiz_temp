@@ -37,7 +37,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
     }
     else {
       if (ctx.text) {
-        return bot.sendMessage(-1002090103134, `${ctx.chat.id} Открыто \n ${ctx.text}`);
+        return bot.sendMessage(-1002116816322, `${ctx.chat.id} Открыто \n ${ctx.text}`);
       }
       else if (ctx.photo) {
         return bot.sendPhoto(to_chat, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n` });
