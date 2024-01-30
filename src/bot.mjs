@@ -29,9 +29,9 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
     const is_active = await checkTaskForUser(ctx.chat.id)
     if (is_active){
-      to_chat = chanel_id
+      to_chat = -1002116816322
     } else {
-      to_chat = chanel_id
+      to_chat = -1002116816322
       const { error } = await supabase.from('tasks').insert({ user_id: ctx.chat.id })
     }
 
