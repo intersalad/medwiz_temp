@@ -30,6 +30,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
     const is_active = await checkTaskForUser(ctx.chat.id)
     if (is_active){
       // отправляем в коммент
+      to_chat = chanel_id
     } else {
       to_chat = chanel_id
       const { error } = await supabase.from('tasks').insert({ user_id: ctx.chat.id })
