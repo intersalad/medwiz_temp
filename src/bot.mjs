@@ -130,9 +130,14 @@ bot.on('/test', async (ctx) => {
     if (error) {
       throw error
     }
-    return bot.sendMessage(ctx.chat.id, JSON.stringify(await supabase.from('tasks').select().eq('user_id', ctx.chat.id)))
+    if (await supabase.from('tasks').select().eq('user_id', ctx.chat.id).data != []){
+      return bot.sendMessage(ctx.chat.id, "true")
+    }
+    else {
+      return bot.sendMessage(ctx.chat.id, "false")
+    }
+
   } catch (error) {
-    console.error('Error fetching data:', error)
     return bot.sendMessage(ctx.chat.id, 'An error occurred while fetching data')
   }
 })
