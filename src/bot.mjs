@@ -126,19 +126,18 @@ bot.on('/start', (msg) => bot.sendMessage(msg.chat.id, "hellooo"));
 
 bot.on('/test', async (ctx) => {
   try {
-    const { data, error } = await supabase.from('tasks').select()
-    if (error) {
-      throw error
-    }
-    if (await supabase.from('tasks').select().eq('user_id', ctx.chat.id).data.length != 0){
+    const { data, error } = await supabase.from('tasks').select().eq('user_id', ctx.chat.id)
+    if (data.length > 0) {
       return bot.sendMessage(ctx.chat.id, "есть в списке")
     }
     else {
       return bot.sendMessage(ctx.chat.id, "нет в списке")
     }
+    if (error) {
+      throw error
+    }
   } catch (error) {
-    console.error('Error fetching data:', error)
-    return bot.sendMessage(ctx.chat.id, `An error occurred while fetching data ${error}`)
+    return bot.sendMessage(ctx.chat.id, `An error occurred while fetching data ${error} \n ${data}`)
   }
 })
 
