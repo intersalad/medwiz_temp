@@ -138,7 +138,7 @@ bot.on('/test', async (ctx) => {
     }
   } catch (error) {
     console.error('Error fetching data:', error)
-    return bot.sendMessage(ctx.chat.id, 'An error occurred while fetching data')
+    return bot.sendMessage(ctx.chat.id, `An error occurred while fetching data ${error}`)
   }
 })
 
