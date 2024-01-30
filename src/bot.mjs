@@ -15,7 +15,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
     if (data.length > 0){
       const to_chat = -1002090103134
       if (ctx.text) {
-        bot.sendMessage(-1002116816322, ctx.text, { message_thread_id: 582 })
+        return bot.forwardMessage(-1002090103134, ctx.text, { replyToMessage: 585 })
       }
 
     } else {
