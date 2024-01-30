@@ -130,11 +130,11 @@ bot.on('/test', async (ctx) => {
     if (error) {
       throw error
     }
-    if (await supabase.from('tasks').select().eq('user_id', ctx.chat.id) != []){
-      return bot.sendMessage(ctx.chat.id, JSON.stringify(await supabase.from('tasks').select().eq('user_id', ctx.chat.id)))
+    if (await supabase.from('tasks').select().eq('user_id', ctx.chat.id).data.length != 0){
+      return bot.sendMessage(ctx.chat.id, "есть в списке")
     }
     else {
-      return bot.sendMessage(ctx.chat.id, "false")
+      return bot.sendMessage(ctx.chat.id, "нет в списке")
     }
 
   } catch (error) {
