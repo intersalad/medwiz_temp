@@ -20,8 +20,8 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
     } 
     
     else {
-      return bot.sendMessage(-1002116816322, 'Ваше сообщение').then( async (result) => {
-        const { error } = await supabase.from('tasks').insert({ user_id: ctx.chat.id, message: result })
+      return bot.sendMessage(-1002116816322, `${ctx.chat.id} Открыто \n ${ctx.text}`).then( async (result) => {
+        const { error } = await supabase.from('tasks').insert({ user_id: ctx.chat.id, message: result.message_id })
       })
     }
 
