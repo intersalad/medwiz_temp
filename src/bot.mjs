@@ -13,9 +13,9 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
     const { data, error } = await supabase.from('tasks').select().eq('user_id', chatId)
     if (data.length > 0){
-      to_chat = -1002116816322
+      let to_chat = -1002116816322
     } else {
-      to_chat = -1002116816322
+      let to_chat = -1002116816322
       const { error } = await supabase.from('tasks').insert({ user_id: ctx.chat.id })
     }
 
