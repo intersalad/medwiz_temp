@@ -29,7 +29,6 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
     const is_active = await checkTaskForUser(ctx.chat.id)
     if (is_active){
-      // отправляем в коммент
       to_chat = chanel_id
     } else {
       to_chat = chanel_id
