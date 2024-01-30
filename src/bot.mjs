@@ -14,6 +14,10 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
     const { data, error } = await supabase.from('tasks').select().eq('user_id', ctx.chat.id)
     if (data.length > 0){
       const to_chat = -1002090103134
+      if (ctx.text) {
+        return bot.sendMessage(-1002090103134, ctx.text)
+      }
+
 
     } else {
       const to_chat = -1002116816322
@@ -33,7 +37,7 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
     }
     else {
       if (ctx.text) {
-        return bot.sendMessage(to_chat, `${ctx.chat.id} Открыто \n ${ctx.text}`);
+        return bot.sendMessage(-1002090103134, `${ctx.chat.id} Открыто \n ${ctx.text}`);
       }
       else if (ctx.photo) {
         return bot.sendPhoto(to_chat, ctx.photo[0].file_id, { caption: `${ctx.chat.id} Открыт\n` });
