@@ -14,7 +14,6 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
     const { data, error } = await supabase.from('tasks').select().eq('user_id', ctx.chat.id)
     if (data.length > 0)
     {
-      const to_chat = -1002090103134
       if (ctx.text) {
         return bot.sendMessage(-1002090103134, ctx.text)
       }
@@ -22,9 +21,9 @@ bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], 
     } 
     
     else {
-      const to_chat = -1002116816322
       return bot.sendMessage(-1002116816322, 'Ваше сообщение').then((result) => {
         const { error } = await supabase.from('tasks').insert({ user_id: ctx.chat.id, message: result.message_id })
+        return bot.sendMessage(363625457, JSON.stringify(result)) 
       })
     }
 
