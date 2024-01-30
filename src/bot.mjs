@@ -11,7 +11,7 @@ const global_chat_id = -1002090103134
 
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], async (ctx) => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
-    const { data, error } = await supabase.from('tasks').select().eq('user_id', chatId)
+    const { data, error } = await supabase.from('tasks').select().eq('user_id', ctx.chat.id)
     if (data.length > 0){
       const to_chat = -1002116816322
       return bot.sendMessage(-1002116816322, "не добавлен")
