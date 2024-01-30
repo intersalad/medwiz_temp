@@ -27,7 +27,7 @@ async function checkTaskForUser(chatId) {
 
 bot.on(["text", "photo", "voice", "video", "videoNote", "sticker", "document"], ctx => {
   if (ctx.chat.id != -1002116816322 && ctx.chat.id != -1002090103134) {
-    const is_active = await checkTaskForUser(ctx.chat.id)
+    const is_active = await checkTaskForUser(ctx.chat.id);
     if (is_active){
       to_chat = -1002116816322
     } else {
